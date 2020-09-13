@@ -23,58 +23,71 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game(n = 5) {
+function displayResult() {
 
-    let playerScore = 0;
-    let computerScore = 0;
+    if (playerTotalScore > computerTotalScore) result.innerText = "You win!!";
 
-    for (let round = 1; round <= n; round++) {
-      
-        let playerSelection = '';
+    else if (playerTotalScore < computerTotalScore) result.innerText ="You lose!!";
+    alert("Thanks for playing!!!!!!!!1");
+}
 
-        playerSelection = window.prompt("Choose rock, paper or scissor");
-        if (playerSelection != null)
-            playerSelection = playerSelection.toLowerCase();
+let playerTotalScore = 0;
+let computerTotalScore = 0;
 
-        while (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissor") {
+function play() {
 
-            playerSelection = window.prompt("Wrong input, please try again");
-            if (playerSelection != null)
-            playerSelection = playerSelection.toLowerCase();
-        }
-
-        let computerSelection = computerPlay();
-
-        console.log(playerSelection, computerSelection);
-        let res = playRound(playerSelection, computerSelection);
-        if (res === 1) {
-            
-            playerScore++;
-            console.log(`You win! ${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}`);
-
-        } else if (res === -1) {
-
-            computerScore++;
-            console.log(`You lose! ${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}`);
-
-        } else {
-
-            console.log("It's a tie");
-        }    
-    }
-
-    if (playerScore > computerScore) {
-
-        console.log("Congradulations you are the winner:D");
-
-    } else if (playerScore < computerScore) {
-
-        console.log("Sorry you lose:/");
-
+    let res = playRound(playerSelection.innerText, computerSelection.innerText);
+    if (res === 1) {
+        result.innerText = "YES";
+       playerTotalScore++; 
+       playerScore.innerText = playerTotalScore;
+    } else if (res === -1) {
+        result.innerText = "NO";
+        computerTotalScore++;
+        computerScore.innerText = computerTotalScore;
     } else {
-
-        console.log("Stalemate :O");
+        result.innerText = "TIE";  
     }
 }
 
-game(3);
+const computerScore = document.querySelector(".computerScore");
+
+const computerSelection = document.querySelector(".computerSelection");
+
+const result = document.querySelector(".result");
+result.innerText = "NO cheating";
+
+const playerSelection = document.querySelector(".playerSelection");
+
+const playerScore = document.querySelector('.playerScore');
+
+let n = 0;
+
+const buttons = document.querySelector(".buttons");
+buttons.addEventListener("click", function(event) {
+    if (event.target !== buttons) {
+        playerSelection.innerText = event.target.innerText.toLowerCase();      
+
+        computerSelection.innerText = computerPlay();
+
+        if (n >= 5) {
+            displayResult();
+            alert("Game will reset");
+            reset();
+        } else {
+            play();
+        }
+        n++;
+    }
+});
+
+function reset() {
+    computerScore.innerText = 0;
+    playerScore.innerText = 0;
+    result.innerText = "No cheating";
+    playerTotalScore = 0;
+    computerTotalScore = 0;
+    playerSelection.innerText = "";
+    computerSelection.innerText = "";
+    n = 0;
+}
