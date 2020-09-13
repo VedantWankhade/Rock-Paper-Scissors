@@ -1,10 +1,12 @@
 const main = document.querySelector("main");
 main.classList.add("hidden");
 
-const startButton = document.querySelector(".start-button > button");
-startButton.addEventListener("click", function() {
+const startButton = document.querySelector(".start-button");
+startButton.addEventListener("click", function(event) {
+    if (event.target !== startButton) {
     startButton.classList.add("hidden");
     main.classList.remove("hidden");
+    }
 })
 
 function computerPlay() {
@@ -37,7 +39,7 @@ function displayResult() {
     if (playerTotalScore > computerTotalScore) result.innerText = "You win!!";
 
     else if (playerTotalScore < computerTotalScore) result.innerText ="You lose!!";
-    alert("Thanks for playing!!!!!!!!1");
+    alert("Thanks for playing!");
 }
 
 let playerTotalScore = 0;
@@ -47,15 +49,15 @@ function play() {
 
     let res = playRound(playerSelection.innerText, computerSelection.innerText);
     if (res === 1) {
-        result.innerText = "YES";
+        result.innerText = `${playerSelection.innerText} beats ${computerSelection.innerText}`;
        playerTotalScore++; 
        playerScore.innerText = playerTotalScore;
     } else if (res === -1) {
-        result.innerText = "NO";
+        result.innerText = `${computerSelection.innerText} beats ${playerSelection.innerText}`;
         computerTotalScore++;
         computerScore.innerText = computerTotalScore;
     } else {
-        result.innerText = "TIE";  
+        result.innerText = "It's a tie";  
     }
 }
 
@@ -81,7 +83,7 @@ buttons.addEventListener("click", function(event) {
 
         if (n >= 5) {
             displayResult();
-            alert("Game will reset");
+            result.innerText = "The game will reset"
             reset();
         } else {
             play();

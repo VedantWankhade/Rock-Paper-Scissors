@@ -1,13 +1,69 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 .hidden {
     display: none;
 }
 
+h1 {
+    text-align: center;
+    padding-top: 1em;
+}
+
+.start-button {
+    text-align: center;
+    padding-top: 10em;
+}
+
+.computerScore {
+    border: 1px solid red;
+}
+
+.computerSelection {
+    border: 1px solid green;
+}
+
+.playerSelection {
+    border: 1px solid red;
+}
+
+.playerScore {
+    border: 1px solid green;
+}
+
+p {
+    margin: 0.7em 0;
+    height: 50px;
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    flex-flow: column;
+    border: 2px solid green;
+    margin-left: 2em;
+    justify-content: space-between;
+}
+
+main {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.dashboard {
+    display: flex;
+    border: 2px solid black;
+    flex-flow: column;
+    width: 50%;
+    margin-left: 6em;
+}
