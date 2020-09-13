@@ -1,10 +1,12 @@
 const main = document.querySelector("main");
 main.classList.add("hidden");
 
-const startButton = document.querySelector(".start-button > button");
-startButton.addEventListener("click", function() {
+const startButton = document.querySelector(".start-button");
+startButton.addEventListener("click", function(event) {
+    if (event.target !== startButton) {
     startButton.classList.add("hidden");
     main.classList.remove("hidden");
+    }
 })
 
 function computerPlay() {
