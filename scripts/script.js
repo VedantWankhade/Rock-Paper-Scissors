@@ -1,3 +1,12 @@
+const main = document.querySelector("main");
+main.classList.add("hidden");
+
+const startButton = document.querySelector(".start-button > button");
+startButton.addEventListener("click", function() {
+    startButton.classList.add("hidden");
+    main.classList.remove("hidden");
+})
+
 function computerPlay() {
     
     const choice = Math.floor(Math.random() * 3);   // gnerate random number between 0 to 2
@@ -90,4 +99,6 @@ function reset() {
     playerSelection.innerText = "";
     computerSelection.innerText = "";
     n = 0;
+    main.classList.add("hidden");
+    startButton.classList.remove("hidden");
 }
