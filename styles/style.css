@@ -24,22 +24,6 @@ h1 {
     padding-top: 10em;
 }
 
-.computerScore {
-    border: 1px solid red;
-}
-
-.computerSelection {
-    border: 1px solid green;
-}
-
-.playerSelection {
-    border: 1px solid red;
-}
-
-.playerScore {
-    border: 1px solid green;
-}
-
 p {
     margin: 0.7em 0;
     height: 50px;
@@ -49,20 +33,19 @@ p {
 .buttons {
     display: flex;
     flex-flow: column;
-    border: 2px solid green;
     margin-left: 2em;
     justify-content: space-between;
 }
 
 main {
     display: flex;
+    margin-top: 3em;
     flex-flow: row nowrap;
     justify-content: center;
 }
 
 .dashboard {
     display: flex;
-    border: 2px solid black;
     flex-flow: column;
     width: 50%;
     margin-left: 6em;

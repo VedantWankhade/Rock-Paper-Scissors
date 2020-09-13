@@ -36,10 +36,10 @@ function playRound(playerSelection, computerSelection) {
 
 function displayResult() {
 
-    if (playerTotalScore > computerTotalScore) result.innerText = "You win!!";
+    if (playerTotalScore > computerTotalScore) alert("Congradulations! You won :)\nThanks for playing");
 
-    else if (playerTotalScore < computerTotalScore) result.innerText ="You lose!!";
-    alert("Thanks for playing!");
+    else if (playerTotalScore < computerTotalScore) alert("Better luck next time :(\nThanks for playing");
+    else alert("Stalemate :O");
 }
 
 let playerTotalScore = 0;
@@ -66,10 +66,12 @@ const computerScore = document.querySelector(".computerScore");
 const computerSelection = document.querySelector(".computerSelection");
 
 const result = document.querySelector(".result");
-result.innerText = "NO cheating";
+result.innerText = "Each round's results will be displayed here";
 
 const playerSelection = document.querySelector(".playerSelection");
 
+playerSelection.classList.add("hidden");
+computerSelection.classList.add("hidden");
 const playerScore = document.querySelector('.playerScore');
 
 let n = 0;
@@ -95,7 +97,6 @@ buttons.addEventListener("click", function(event) {
 function reset() {
     computerScore.innerText = 0;
     playerScore.innerText = 0;
-    result.innerText = "No cheating";
     playerTotalScore = 0;
     computerTotalScore = 0;
     playerSelection.innerText = "";
